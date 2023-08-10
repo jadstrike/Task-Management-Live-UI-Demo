@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Layout, Space, Menu } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 import {
@@ -48,8 +50,8 @@ const footerStyle = {
 };
 
 const items = [
-  getItem("Home", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
+  getItem("Home", "/home", <PieChartOutlined />),
+  getItem("Members", "/members", <UserOutlined />),
   getItem("User", "sub1", <UserOutlined />, [
     getItem("Tom", "3"),
     getItem("Bill", "4"),
@@ -64,6 +66,12 @@ const items = [
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const router = useRouter();
+  const onClick = (e) => {
+    console.log(e);
+    router.push(e.key);
+  };
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -76,7 +84,12 @@ const layout = ({ children }) => {
         <div className="flex items-center justify-center mb-5 font-bold text-white bg-black h-14">
           LOGO
         </div>
-        <Menu defaultSelectedKeys={["1"]} mode="inline" items={items} />
+        <Menu
+          defaultSelectedKeys={["/home"]}
+          mode="inline"
+          items={items}
+          onClick={onClick}
+        />
       </Sider>
       <Layout>
         <Content style={contentStyle}>{children}</Content>
