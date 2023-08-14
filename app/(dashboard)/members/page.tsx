@@ -1,9 +1,4 @@
-import React from "react";
-
-// const getData = async () => {
-//   const members = await db.members.findMany({});
-//   return members;
-// };
+const getData = async () => {};
 
 const member = () => {
   // const members = await getData();
