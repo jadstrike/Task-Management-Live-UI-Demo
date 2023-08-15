@@ -92,7 +92,12 @@ const layout = ({ children }) => {
       </Sider>
       <Layout>
         <Content style={contentStyle}>{children}</Content>
-        <Footer style={footerStyle}>Developed by Issac</Footer>
+        <Footer
+          className="border-gray-200 border-solid shadow-md"
+          style={footerStyle}
+        >
+          Developed by Issac
+        </Footer>
       </Layout>
     </Layout>
   );

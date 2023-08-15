@@ -1,3 +1,4 @@
+import CreateMember from "../../../components/CreateMember";
 import MemberList from "../../../components/MemberList";
 import db from "../../../utils/db";
 const getData = async () => {
@@ -9,7 +10,8 @@ const member = async () => {
   const members = await getData();
   console.log(members);
   return (
-    <div className="text-black ">
+    <div className="mx-6 mt-12 border-2 border-gray-200 shadow-lg ">
+      <CreateMember />
       <MemberList members={members}></MemberList>
     </div>
   );
