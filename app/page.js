@@ -1,15 +1,5 @@
 "use client";
-import Image from "next/image";
-import {
-  Card,
-  Avatar,
-  Space,
-  Typography,
-  Input,
-  Button,
-  Form,
-  Checkbox,
-} from "antd";
+import { Card, Input, Button, Form, Checkbox } from "antd";
 
 export default function Login() {
   return (

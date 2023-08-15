@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Layout, Space, Menu } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 import {
@@ -68,7 +67,7 @@ const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
   const onClick = (e) => {
-    console.log(e);
+    // console.log(e);
     router.push(e.key);
   };
   // eslint-disable-next-line react-hooks/rules-of-hooks
