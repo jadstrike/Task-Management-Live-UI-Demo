@@ -1,6 +1,7 @@
 "use client";
 import Member from "./Member";
-import { Space, Table, Tag, Input, Button } from "antd";
+import { Space, Table, Tag, Input, Button, Modal } from "antd";
+import { useState } from "react";
 const columns = [
   {
     title: "Name",
@@ -88,10 +89,32 @@ const data = [
 ];
 
 const MemberList = ({ members }) => {
+  const [mode, setMode] = useState(false);
+  const handleCancel = () => {
+    setMode(false);
+  };
+  const handleOK = () => {
+    setMode(false);
+  };
   return (
     <div className="flex flex-col justify-center ">
       <div className="flex flex-row">
-        <Button className="mx-3 my-3">Create New Member</Button>
+        <Button className="mx-3 my-3" onClick={() => setMode(true)}>
+          Create New Member
+        </Button>
+        <Modal
+          open={mode}
+          title="Create New Member"
+          onCancel={handleCancel}
+          onOk={handleOK}
+          okButtonProps={{ style: { backgroundColor: "black" } }}
+        >
+          <form action="" className="flex flex-col space-y-3">
+            <input type="text" className="border border-gray-400 " />
+            <input type="text" className="border border-gray-400 " />
+            <input type="text" className="border border-gray-400" />
+          </form>
+        </Modal>
         <Input className="mx-3 my-3 w-96" placeholder="Search Members 🔎" />
       </div>
       <Table columns={columns} dataSource={data} />
