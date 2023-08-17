@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import AnimatedCursor from "react-animated-cursor";
 import { useRouter } from "next/navigation";
 import { Layout, Space, Menu } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
@@ -99,6 +100,7 @@ const layout = ({ children }) => {
           Developed by Issac
         </Footer>
       </Layout>
+      <AnimatedCursor />
     </Layout>
   );
 };

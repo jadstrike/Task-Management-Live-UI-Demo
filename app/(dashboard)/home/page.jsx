@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectPie from "@/components/ProjectPie";
+import ProjectPie from "../../../components/ProjectPie";
 import { Typography, Card } from "antd";
 const { Title } = Typography;
 import React from "react";

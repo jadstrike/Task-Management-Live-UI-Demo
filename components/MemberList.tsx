@@ -2,6 +2,7 @@
 import Member from "./Member";
 import { Space, Table, Tag, Input, Button, Modal } from "antd";
 import { useState } from "react";
+import AnimatedCursor from "react-animated-cursor";
 const columns = [
   {
     title: "Name",
@@ -110,9 +111,24 @@ const MemberList = ({ members }) => {
           okButtonProps={{ style: { backgroundColor: "black" } }}
         >
           <form action="" className="flex flex-col space-y-3">
-            <input type="text" className="border border-gray-400 " />
-            <input type="text" className="border border-gray-400 " />
-            <input type="text" className="border border-gray-400" />
+            <input
+              name="name"
+              type="text"
+              className="border border-gray-400 "
+              placeholder="Name"
+            />
+            <input
+              placeholder="Name"
+              name="email"
+              type="text"
+              className="border border-gray-400 "
+            />
+            <input
+              name="role"
+              placeholder="Role"
+              type="text"
+              className="border border-gray-400"
+            />
           </form>
         </Modal>
         <Input className="mx-3 my-3 w-96" placeholder="Search Members 🔎" />
