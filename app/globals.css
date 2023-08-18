@@ -5,3 +5,7 @@
 .ant-layout-sider-trigger {
   background-color: black !important;
 }
+
+.ant-btn-primary:hover {
+  background-color: #332c39 !important;
+}

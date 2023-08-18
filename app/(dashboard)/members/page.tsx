@@ -7,7 +7,6 @@ const getData = async () => {
 
 const member = async () => {
   const members = await getData();
-  console.log(members);
   return (
     <div className="mx-6 mt-12 border-2 border-gray-200 shadow-lg ">
       <MemberList members={members}></MemberList>

@@ -1,8 +1,8 @@
 "use client";
-import Member from "./Member";
 import { Space, Table, Tag, Input, Button, Modal } from "antd";
+import { deleteMember, newMember } from "../utils/actions";
 import { useState } from "react";
-import AnimatedCursor from "react-animated-cursor";
+
 const columns = [
   {
     title: "Name",
@@ -11,34 +11,16 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
+    title: "Role",
+    dataIndex: "role",
+    key: "role",
+    render: (_, { role }) => <Tag color="green">{role}</Tag>,
   },
+
   {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    title: "Email",
+    key: "email",
+    dataIndex: "email",
   },
   {
     title: "Action",
@@ -46,55 +28,25 @@ const columns = [
     render: (_, record) => (
       <Space size="middle">
         <a className="text-blue-500 ">View</a>
-        <a>Delete</a>
+        <a
+          onClick={() => deleteMember(record.id)}
+          className="text-red-500 hover:text-red-300 "
+        >
+          Delete
+        </a>
       </Space>
     ),
   },
 ];
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-  },
-  {
-    key: "4",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-  },
-  {
-    key: "5",
-    name: "Joe Black",
-    age: 32,
-    address: "Sydney No. 1 Lake Park",
-    tags: ["cool", "teacher"],
-  },
-];
 
 const MemberList = ({ members }) => {
+  // console.log(members);
   const [mode, setMode] = useState(false);
   const handleCancel = () => {
     setMode(false);
   };
-  const handleOK = () => {
+  const handleOK = (e) => {
+    // console.log(e);
     setMode(false);
   };
   return (
@@ -107,33 +59,43 @@ const MemberList = ({ members }) => {
           open={mode}
           title="Create New Member"
           onCancel={handleCancel}
-          onOk={handleOK}
-          okButtonProps={{ style: { backgroundColor: "black" } }}
+          footer={null}
+          width={400}
         >
-          <form action="" className="flex flex-col space-y-3">
+          <form action={newMember} className="flex flex-col space-y-3">
             <input
               name="name"
               type="text"
-              className="border border-gray-400 "
+              className="h-8 p-2 border border-gray-400 "
               placeholder="Name"
             />
             <input
-              placeholder="Name"
+              placeholder="Email"
               name="email"
               type="text"
-              className="border border-gray-400 "
+              className="h-8 p-2 border border-gray-400 "
             />
             <input
               name="role"
               placeholder="Role"
               type="text"
-              className="border border-gray-400"
+              className="h-8 p-2 border border-gray-400 "
             />
+            <Button
+              htmlType="submit"
+              type="primary"
+              className="text-white bg-black "
+            >
+              Submit
+            </Button>
+            <Button className="" onClick={handleOK}>
+              Cancel
+            </Button>
           </form>
         </Modal>
         <Input className="mx-3 my-3 w-96" placeholder="Search Members 🔎" />
       </div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={members} />
     </div>
   );
 };
