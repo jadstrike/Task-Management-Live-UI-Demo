@@ -1,3 +1,5 @@
+"use client";
+
 import MemberList from "../../../components/MemberList";
 // import db from "../../../utils/db";
 // const getData = async () => {
