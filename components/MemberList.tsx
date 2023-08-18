@@ -29,7 +29,7 @@ const columns = [
       <Space size="middle">
         <a className="text-blue-500 ">View</a>
         <a
-          onClick={() => deleteMember(record.id)}
+          // onClick={() => deleteMember(record.id)}
           className="text-red-500 hover:text-red-300 "
         >
           Delete
@@ -39,7 +39,16 @@ const columns = [
   },
 ];
 
-const MemberList = ({ members }) => {
+const data = [
+  {
+    key: "1",
+    name: "Khant Zwe Naing",
+    role: "Frontend Developer",
+    email: "issaciscoding@gmail.com",
+  },
+];
+
+const MemberList = () => {
   // console.log(members);
   const [mode, setMode] = useState(false);
   const handleCancel = () => {
@@ -82,20 +91,18 @@ const MemberList = ({ members }) => {
               className="h-8 p-2 border border-gray-400 "
             />
             <Button
-              htmlType="submit"
+              // htmlType="submit"
               type="primary"
               className="text-white bg-black "
             >
               Submit
             </Button>
-            <Button className="" onClick={handleOK}>
-              Cancel
-            </Button>
+            <Button onClick={handleCancel}>Cancel</Button>
           </form>
         </Modal>
         <Input className="mx-3 my-3 w-96" placeholder="Search Members 🔎" />
       </div>
-      <Table columns={columns} dataSource={members} />
+      <Table columns={columns} dataSource={data} />
     </div>
   );
 };
