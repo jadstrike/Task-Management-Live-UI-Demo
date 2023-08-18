@@ -46,6 +46,12 @@ const data = [
     role: "Frontend Developer",
     email: "issaciscoding@gmail.com",
   },
+  {
+     key: "2",
+    name: "Mavic",
+    role: "UI/UX designer",
+    email: "mavic@gmail.com",
+  }
 ];
 
 const MemberList = () => {
